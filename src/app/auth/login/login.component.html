@@ -1,0 +1,27 @@
+<div class="container">
+        <div class="card bg-light d-flex align-content-center">
+            <article class="card-body mx-auto" style="max-width: 400px;">
+                <h4 class="card-title mt-3 text-center">Login Account</h4>
+                <!-- <p class="text-center">Get started with your free account</p> -->
+                <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                        </div>
+                        <input name="email" class="form-control" ngModel id="emailId" placeholder="Email address" type="email" required>
+                    </div> <!-- form-group// -->
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                        </div>
+                        <input name="password" class="form-control" id="pwd" ngModel placeholder="Create password" type="password" required>
+                    </div> <!-- form-group// -->
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                    </div> <!-- form-group// -->
+                    <p class="text-center">Don't have an account? <a routerLink="/signup">Create Account</a> </p>
+                </form>
+            </article>
+        </div> <!-- card.// -->
+    
+    </div>

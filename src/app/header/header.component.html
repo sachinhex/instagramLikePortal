@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-md bg-dark navbar-dark mb-4">
+    <a class="navbar-brand" href="#">Demo Gram</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+          <a class="nav-link" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" *ngIf="isLoggedIn">
+          <a class="nav-link" routerLink="/all-posts">All Posts</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" *ngIf="isLoggedIn">
+          <a class="nav-link" routerLink="/following">Following</a>
+        </li>    
+        <li class="nav-item" routerLinkActive="active" *ngIf="isLoggedIn">
+          <a class="nav-link" routerLink="/favorites">Favorites</a>
+        </li>    
+        <li class="nav-item" routerLinkActive="active" *ngIf="isLoggedIn">
+          <a class="nav-link" routerLink="/my-posts">My Posts</a>
+        </li>    
+      </ul>
+      <ul class="navbar-nav navbar-right justify-content-end">
+            <li class="nav-item dropdown" *ngIf="isLoggedIn">
+              <a type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                {{name}}
+              </a>
+              <ul class="dropdown-menu">
+               <li><a class="dropdown-item" href="#">{{email}}</a></li> 
+               <li><a class="dropdown-item" href="#">{{uid}}</a></li> 
+              </ul>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" routerLink="/signup" *ngIf="!isLoggedIn">Sign Up</a>
+            </li> 
+            <li class="nav-item" routerLinkActive="active" *ngIf="!isLoggedIn">
+                    <a class="nav-link" routerLink="/login">Login</a>
+            </li> 
+            <li class="nav-item" routerLinkActive="active" (click)="onLogout()" *ngIf="isLoggedIn">
+                    <a href="#" class="nav-link" >Logout</a>
+            </li> 
+        <!-- <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
+      </ul>
+    </div>  
+  </nav>  
