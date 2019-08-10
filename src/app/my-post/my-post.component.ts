@@ -20,16 +20,19 @@ export class MyPostComponent implements OnInit {
     console.log(event);
 
     const filelist: FileList = event.target.files;
-    console.log(filelist);
+    // console.log(filelist);
     if (filelist.length > 0) {
       const file: File = filelist[0];
       this.myFire.uploadFile(file)
-        // .then(data => {
-        //   this.notifier.display('success', 'Image uploaded successfully');
-        // })
-        // .catch(err => {
-        //   this.notifier.display('error', err.message);
-        // });
+        .then(data => {
+          this.notifier.display('success', 'Image uploaded successfully');
+          console.log(data['downloadURL']);          
+          
+        })
+        .catch(err => {
+          this.notifier.display('error', err.message);
+          console.log(err.message);
+        });
     }
 
 

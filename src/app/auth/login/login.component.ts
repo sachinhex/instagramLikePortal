@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
       }).then(userDataFromDatabase => {
         if (userDataFromDatabase) {
           this.userService.set(userDataFromDatabase);
-          this.router.navigate(['/all-posts'])
+          // this.router.navigate(['/all-posts'])
           // console.log(userDataFromDatabase);            
         }
       }).catch(err => {
