@@ -1,7 +1,13 @@
 import * as firebase from 'firebase';
 import { promise } from 'protractor';
+import { userInfo } from 'os';
+import { UserService } from './user.service';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class MyFireservice {
+    constructor(private user:UserService){}
+
     fileUrl: Promise<any>;
     getUserFromDatabase(uid) {
         const ref = firebase.database().ref('users/' + uid);
@@ -9,6 +15,7 @@ export class MyFireservice {
             .then(snapshot => snapshot.val())
     }
 
+    /** function uploadFile for uploading file and  creating download fileUrl */
     uploadFile(file) {
         const fileName = file.name;
         const fileRef = firebase.storage().ref().child('image/' + file.name);
@@ -52,5 +59,43 @@ export class MyFireservice {
             }
             )
         });
+    }
+
+    /**  function handleImageUpload for creating related top level node and handling related uplaod data */
+    handleImageUpload(data){
+        const user = this.user.getProfile();
+        const filename= data.fileName.split(".")['0'];
+
+        console.log(filename);
+        
+        const newPersonalPostKey = firebase.database().ref().child('myposts').push().key;
+        const personalPostDetails={
+        name: filename,
+        fileUrl:data.downloadURL,
+        creationDate: new Date().toString()
+        }
+
+        const allPostKey = firebase.database().ref().child('allposts').push().key;
+        const allPostDetails={
+        name: filename,
+        fileUrl:data.downloadURL,
+        creationDate: new Date().toString(),
+        uploadedBy: user
+        }
+
+        const imageDetails={
+        name: filename,
+        fileUrl:data.downloadURL,
+        creationDate: new Date().toString(),
+        uploadedBy: user,
+        favoriteCount:0
+        }
+
+
+        const updates={};
+        updates['/myposts/'+ user.uid + '/' + newPersonalPostKey]=personalPostDetails;
+        updates['/allposts/'+ user.uid + '/' + allPostKey]=allPostDetails;
+        updates['/images/'+ filename]=imageDetails;
+        firebase.database().ref().update(updates);
     }
 }
