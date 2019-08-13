@@ -98,4 +98,7 @@ export class MyFireservice {
         updates['/images/'+ filename]=imageDetails;
         firebase.database().ref().update(updates);
     }
+    getPostRef(uid){
+        return firebase.database().ref('myposts').child(uid);
+    }
 }
