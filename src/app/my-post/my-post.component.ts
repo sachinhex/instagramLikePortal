@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MyFireservice } from '../shared/myfire.service';
 import { NotificationService } from '../shared/notification.service';
 import * as firebase from 'firebase';
@@ -8,9 +8,9 @@ import * as firebase from 'firebase';
   templateUrl: './my-post.component.html',
   styleUrls: ['./my-post.component.css']
 })
-export class MyPostComponent implements OnInit {
+export class MyPostComponent implements OnInit,OnDestroy {
   personalPostRef: any;
-  postList: any=[];
+  postList: any=[];  
 
   constructor(
     private myFire: MyFireservice,
@@ -51,6 +51,10 @@ export class MyPostComponent implements OnInit {
     }
 
 
+  }
+
+  ngOnDestroy(){
+    this.personalPostRef.off();
   }
 
 }

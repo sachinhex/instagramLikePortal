@@ -1,7 +1,20 @@
 <div class="container">
-    <div class="form-group card">
-        <div class="card-body">
-            <input type="file" name="" id="" (change)="onUploadChange($event)" accept=".png, .jpeg, .jpg">
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group card">
+                <div class="card-body">
+                    <input type="file" name="" id="" (change)="onUploadChange($event)" accept=".png, .jpeg, .jpg">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="image-container col-12">
+            <div class="row">
+                <app-post *ngFor="let post of postList" class="m-3"
+                [imageName]="post.data.name" [displayPostedBy]="false">                
+                </app-post>                      
+            </div>
         </div>
     </div>
 </div>

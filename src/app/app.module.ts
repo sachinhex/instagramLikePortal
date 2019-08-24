@@ -17,6 +17,7 @@ import { RouteGuard } from './auth/route-guard';
 import { NotificationService } from './shared/notification.service';
 import { MyFireservice } from './shared/myfire.service';
 import { UserService } from './shared/user.service';
+import { PostComponent } from './shared/post/post.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { UserService } from './shared/user.service';
     SignUpComponent,
     LoginComponent,
     HomeComponent,
-    NotificationComponent
+    NotificationComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
