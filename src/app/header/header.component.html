@@ -23,8 +23,8 @@
       </ul>
       <ul class="navbar-nav navbar-right justify-content-end">
             <li class="nav-item dropdown" *ngIf="isLoggedIn">
-              <a type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                {{name}}
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown">
+                {{name | titlecase}}
               </a>
               <ul class="dropdown-menu">
                <li><a class="dropdown-item" href="#">{{email}}</a></li> 

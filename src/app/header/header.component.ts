@@ -38,12 +38,12 @@ export class HeaderComponent implements OnInit {
       if (userData && userData.emailVerified) {
         this.isLoggedIn = true;
         const user = this.userService.getProfile();
-        if(user  && user.name){
+        if(user  && user.fullname){
           this.name = user.fullname;
           this.email = user.email;
           this.uid = user.uid;
         }
-        this.router.navigate(["/my-posts"]);
+        this.router.navigate(["/all-posts"]);
       }
       else {
         this.isLoggedIn = false;

@@ -13,14 +13,3 @@
 .alert-success{
     background-color: #25ab42c4 !important;
 }
-
-@media only screen and (max-width:991px){
-    .image-section img{
-        width: 146px;
-    }
-}
-@media only screen and (max-width:1199px){
-    .image-section img{
-        width: 158px;
-    }
-}

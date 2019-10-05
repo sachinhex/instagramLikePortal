@@ -94,7 +94,7 @@ export class MyFireservice {
 
         const updates={};
         updates['/myposts/'+ user.uid + '/' + newPersonalPostKey]=personalPostDetails;
-        updates['/allposts/'+ user.uid + '/' + allPostKey]=allPostDetails;
+        updates['/allposts/' + allPostKey]=allPostDetails;
         updates['/images/'+ filename]=imageDetails;
         firebase.database().ref().update(updates);
     }

@@ -14,7 +14,7 @@
           </div>
       
           <div *ngIf="imageData.uploadedBy && displayPostedBy" class="text-section-row row2">
-            <span>Posted by: {{imageData.uploadedBy.name}} </span>
+            <span>Posted by: {{imageData.uploadedBy.fullname | titlecase}} </span>
           </div>
       
           <div *ngIf="imageData.favoriteCount >= 0" class="text-section-row row3">
