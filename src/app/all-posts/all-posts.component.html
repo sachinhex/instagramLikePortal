@@ -8,7 +8,7 @@
         <div class="image-container col-12">
             <div class="row">
                 <app-post *ngFor="let post of allPost" class="m-3"
-                [imageName]="post.data.name" [displayPostedBy]="true">                
+                [imageName]="post.data.name" (FavoritesClicked)="onFavoritesClicked($event)">                
                 </app-post>                      
             </div>
         </div>

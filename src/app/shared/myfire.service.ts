@@ -98,6 +98,17 @@ export class MyFireservice {
         updates['/images/'+ filename]=imageDetails;
         firebase.database().ref().update(updates);
     }
+
+    handleFavoriteCliked(imageData){
+        const user = this.user.getProfile();
+
+        const updates={};
+        updates['/images/'+ imageData.name + '/' + '/oldFavoriteCount']=imageData.favoriteCount;
+        updates['/images/'+ imageData.name + '/' + '/favoriteCount']=imageData.favoriteCount + 1;
+        updates['/favorites/'+ user.uid + '/' + imageData.name]=imageData;
+        
+        return firebase.database().ref().update(updates);
+    }
     getPostRef(uid){
         return firebase.database().ref('myposts').child(uid);
     }
