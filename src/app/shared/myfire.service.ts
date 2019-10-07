@@ -109,6 +109,13 @@ export class MyFireservice {
         
         return firebase.database().ref().update(updates);
     }
+    FollowUser(uploadedUser){
+        const user = this.user.getProfile();
+        const updates= {};
+        updates['/follow/' + user.uid + '/' + uploadedUser.uid] = true;
+
+        return firebase.database().ref().update(updates);
+    }
     getPostRef(uid){
         return firebase.database().ref('myposts').child(uid);
     }

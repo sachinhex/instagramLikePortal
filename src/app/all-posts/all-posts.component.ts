@@ -53,6 +53,15 @@ export class AllPostsComponent implements OnInit, OnDestroy {
       this.notifier.display('error', 'Error while adding image to favorite');
     })
   }
+  onFollowClicked(imageData){
+    this.myFire.FollowUser(imageData.uploadedBy)
+    .then(data=>{
+      this.notifier.display('success', 'Following' + imageData.uploadedBy.fullname);
+    })
+    .catch(err=>{
+      this.notifier.display('error', err);
+    })
+  }
 
   ngOnDestroy(){
     this.allRef.off();

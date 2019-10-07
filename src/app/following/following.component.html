@@ -1,1 +1,17 @@
-<p>following works!</p>
+<div class="container">
+    <!-- <div class="row">
+        <div class="col-12 text-left">
+                <button class="btn btn-primary" (click)="onLoadMore()">Load More Images</button>
+        </div>
+    </div> -->
+    <div class="row">
+        <div class="image-container col-12">
+            <div class="row">
+                <app-post *ngFor="let post of followPost" class="m-3"
+                [imageName]="post.data.name"
+                [displayFavoritesButton]="false" [displayFollowButton]="false">                
+                </app-post>                      
+            </div>
+        </div>
+    </div>
+</div>
