@@ -56,7 +56,7 @@ export class AllPostsComponent implements OnInit, OnDestroy {
   onFollowClicked(imageData){
     this.myFire.FollowUser(imageData.uploadedBy)
     .then(data=>{
-      this.notifier.display('success', 'Following' + imageData.uploadedBy.fullname);
+      this.notifier.display('success', 'Following' + ' '  + imageData.uploadedBy.fullname);
     })
     .catch(err=>{
       this.notifier.display('error', err);
